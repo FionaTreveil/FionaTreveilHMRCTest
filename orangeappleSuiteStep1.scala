@@ -17,9 +17,6 @@ class orangeappleSuite extends FunSuite {
   val purchases1: List[String] = List("apple", "apple", "orange", "apple")
   val purchases2: List[String] = List()
   val purchases3: List[String] = List("apple", "banana", "orange", "apple")
-  
-  val specials1: List[String] = List("apple", "apple", "apple", "apple", "apple", "orange")
-  val specials2: List[String] = List("orange", "orange", "orange", "orange", "apple", "orange")
   }
 
 
@@ -31,11 +28,6 @@ class orangeappleSuite extends FunSuite {
       assert(s2 === 0.0)
       val s3 = orangeapple.totalPuchases(purchases3)
       assert(s3 === 1.45)
-      
-      val s4 = orangeapple.specialPurchases(specials1)
-      assert (s4 === 2.05)
-      val s5 = orangeapple.specialPurchases(specials2)
-      assert (s5 === 1.6)
     }
   }
 
