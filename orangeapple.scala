@@ -12,7 +12,7 @@ def totalPuchases (list: List[String]): Double =
   } 
 
 
-case class Counters(var a: Int, var o: Int) {
+case class Counters(a: Int, o: Int) {
 	}
 
 def specialPurchases (list: List[String]): Double = {
@@ -20,8 +20,8 @@ def specialPurchases (list: List[String]): Double = {
 
 	// Find the total numbers of apples and oranges bought
   val counts = list.foldLeft(start) { (t,i) =>  i match {
-  	case "apple" => new Counters(t.a + 1, t.o)
-  	case "orange" => new Counters(t.a, t.o + 1)
+  	case "apple" => Counters(t.a + 1, t.o)
+  	case "orange" => Counters(t.a, t.o + 1)
   	case _ => t
   	}
   }
@@ -35,19 +35,19 @@ def specialPurchases (list: List[String]): Double = {
 // numbers of both apples and oranges that have been added.
 // If this was to include more different items, then the item counts could be stored in a larger structure eg List or Set
 // The details of the specific special offer for each item type could be defined as a function to be called by the main loop
-case class Counters2(var a: Int, var o: Int, amount: Double) {
+case class Counters2(a: Int, o: Int, amount: Double) {
 	}
 
 def specials2(list: List[String]): Double = {
 	val start: Counters2 = new Counters2(0,0, 0.0)
   val counts = list.foldLeft(start) { (t,i) =>  i match {
-  	case "apple" => { //new Counters(t.a + 1, t.o)
-  			if (t.a > 0) new Counters2(0, t.o, t.amount)		// This apple is second one that is free
-  			else new Counters2(1, t.o, t.amount + 0.25)		// Pay for this apple
+  	case "apple" => { 
+  			if (t.a > 0) Counters2(0, t.o, t.amount)		// This apple is second one that is free
+  			else Counters2(1, t.o, t.amount + 0.25)		// Pay for this apple
   		}
-  	case "orange" => { //new Counters(t.a, t.o + 1)
-  			if (t.o == 2) new Counters2(t.a, 0, t.amount)	// 3rd orange is free (2 for price of 1)
-  			else new Counters2(t.a, t.o + 1, t.amount + 0.6)
+  	case "orange" => { 
+  			if (t.o == 2) Counters2(t.a, 0, t.amount)	// 3rd orange is free (2 for price of 1)
+  			else Counters2(t.a, t.o + 1, t.amount + 0.6)
   	}
   	case _ => t
   	}
